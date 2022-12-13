@@ -39,6 +39,9 @@ function Product({ id, title, price, description, category, image }) {
           prefix={'€'}
           displayType={'text'}
           decimalSeparator={','}
+          decimalScale={2}
+          fixedDecimalScale={true}
+          thousandSeparator={'.'}
         />
       </div>
       {hasPrime && (

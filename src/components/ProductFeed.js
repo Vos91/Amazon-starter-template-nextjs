@@ -18,7 +18,7 @@ function ProductFeed({ products }) {
         ))}
 
       <img
-        className='md:col-span-full'
+        className='md:col-span-full mx-auto'
         src='https://links.papareact.com/dyz'
         alt='Products from small & medium businesses'
       />
