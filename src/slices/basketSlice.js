@@ -1,15 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   items: [],
 };
 
 export const basketSlice = createSlice({
-  name: "basket",
+  name: 'basket',
   initialState,
   reducers: {
-    addToBasket: (state, action) => {},
-    removeFromBasket: (state, action) => {},
+    addToBasket: (state, action) => {
+      state.items = [...state.items, action.payload];
+    },
+    removeFromBasket: (state, action) => {
+      // Find ID of item you want to delete
+      const index = state.items.findIndex(
+        (basketItem) => basketItem.id === action.payload.id
+      );
+
+      // make copy of the basket
+      let newBasket = [...state.items];
+
+      if (index >= 0) {
+        // item exists in the basket... remove it...
+        newBasket.splice(index, 1);
+      } else {
+        console.warn(
+          `Can't remove product (id: ${action.payload.id}) as it's not in the basket!`
+        );
+      }
+
+      state.items = newBasket;
+    },
   },
 });
 
